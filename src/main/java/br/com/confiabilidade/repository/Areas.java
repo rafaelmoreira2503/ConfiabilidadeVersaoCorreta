@@ -70,43 +70,41 @@ public class Areas implements Serializable {
 	@SuppressWarnings("unchecked")
 	public List<Area> filtrados(FiltroArea filtro) {
 		Criteria criteria = criarCriteriaParaFiltro(filtro);
-		
+
 		criteria.setFirstResult(filtro.getPrimeiroRegistro());
 		criteria.setMaxResults(filtro.getQuantidadeRegistros());
-		
+
 		if (filtro.isAscendente() && filtro.getPropriedadeOrdenacao() != null) {
 			criteria.addOrder(Order.asc(filtro.getPropriedadeOrdenacao()));
 		} else if (filtro.getPropriedadeOrdenacao() != null) {
 			criteria.addOrder(Order.desc(filtro.getPropriedadeOrdenacao()));
 		}
-		
+
 		return criteria.list();
 	}
-	
+
 	public int quantidadeFiltrados(FiltroArea filtro) {
 		Criteria criteria = criarCriteriaParaFiltro(filtro);
-		
+
 		criteria.setProjection(Projections.rowCount());
-		
+
 		return ((Number) criteria.uniqueResult()).intValue();
 	}
-	
+
 	private Criteria criarCriteriaParaFiltro(FiltroArea filtro) {
 		Session session = manager.unwrap(Session.class);
 		Criteria criteria = session.createCriteria(Area.class);
-		
+
 		if (StringUtils.isNotEmpty(filtro.getDescricao())) {
 			criteria.add(Restrictions.ilike("descricao", filtro.getDescricao(), MatchMode.ANYWHERE));
 		}
-		
+
 		return criteria;
 	}
 
-	
 	public Area porNome(String nome) {
 		try {
-			return manager.createNamedQuery(Area.DESCRICAO, Area.class)
-					.setParameter("descricao", nome.toUpperCase())
+			return manager.createNamedQuery(Area.DESCRICAO, Area.class).setParameter("descricao", nome.toUpperCase())
 					.getSingleResult();
 		} catch (NoResultException e) {
 			return null;
@@ -115,14 +113,11 @@ public class Areas implements Serializable {
 
 	public List<Area> temComoArea() {
 		try {
-			return manager.createQuery(" from Area", Area.class)
-					.getResultList();
+			return manager.createQuery(" from Area", Area.class).getResultList();
 		} catch (NoResultException e) {
 			return null;
 		}
 	}
-
-	
 
 	public int countAll(Map<String, String> filtros) {
 		String jpql = Area.COUNT;
@@ -136,8 +131,7 @@ public class Areas implements Serializable {
 		return query.getSingleResult().intValue();
 	}
 
-	public List<Area> buscaPorPaginacao(int posicaoPrimeiraLinha,
-			int maximoPorPagina, String ordernarPeloCampo,
+	public List<Area> buscaPorPaginacao(int posicaoPrimeiraLinha, int maximoPorPagina, String ordernarPeloCampo,
 			String ordernarAscOuDesc, Map<String, String> filtros) {
 		String jpql = Area.ALL;
 
@@ -151,8 +145,7 @@ public class Areas implements Serializable {
 				ordernarAscOuDesc = "ASC";
 			}
 
-			jpql += " ORDER BY a." + ordernarPeloCampo + " "
-					+ ordernarAscOuDesc;
+			jpql += " ORDER BY a." + ordernarPeloCampo + " " + ordernarAscOuDesc;
 		}
 
 		// metodo buscarPorPaginacao
@@ -166,8 +159,7 @@ public class Areas implements Serializable {
 	}
 
 	// Evitando SQL Injection
-	private void popularParametros(TypedQuery<?> query,
-			Map<String, String> filtros) {
+	private void popularParametros(TypedQuery<?> query, Map<String, String> filtros) {
 		for (Map.Entry<String, String> entry : filtros.entrySet()) {
 			query.setParameter(entry.getKey(), "%" + entry.getValue() + "%");
 		}

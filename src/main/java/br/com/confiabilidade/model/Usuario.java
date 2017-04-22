@@ -29,10 +29,10 @@ import org.hibernate.validator.constraints.NotBlank;
 @NamedQueries({
 		@NamedQuery(name = Usuario.CARREGARGERENTE, query = "select u from Usuario u where u.chefe is null and u.empresa.codigo=:codigo "),
 		@NamedQuery(name = Usuario.CARREGARTECNICO, query = "select u from Usuario u where u.chefe.codigo=:codigo"),
-		@NamedQuery(name = Usuario.CARREGARENCARREGADO, query = "select u from Usuario u where u.permissao='ENCARREGADO' and  u.empresa.codigo=:codigo"),
-		@NamedQuery(name = Usuario.BUSCAAREAENCARREGADO, query = "select u from Usuario u where u.permissao='ENCARREGADO' and u.areaEncarregado is not null and u.empresa.codigo =:codigo"),
-		@NamedQuery(name = Usuario.BUSCAEAENCARREGADOEXISTENTE, query = "select u from Usuario u where u.permissao='ENCARREGADO' and u.areaEncarregado.codigo=:codigoArea and u.empresa.codigo =:codigo"),
-		@NamedQuery(name = Usuario.POREMAIL, query = "from Usuario where lower(email) = :email"),
+		@NamedQuery(name = Usuario.CARREGARENCARREGADO, query = "select u from Usuario u where u.permissao=br.com.confiabilidade.model.Permissao.ENCARREGADO and  u.empresa.codigo=:codigo"),
+		@NamedQuery(name = Usuario.BUSCAAREAENCARREGADO, query = "select u from Usuario u where u.permissao=br.com.confiabilidade.model.Permissao.ENCARREGADO and u.areaEncarregado is not null and u.empresa.codigo =:codigo"),
+		@NamedQuery(name = Usuario.BUSCAEAENCARREGADOEXISTENTE, query = "select u from Usuario u where u.permissao= br.com.confiabilidade.model.Permissao.ENCARREGADO and u.areaEncarregado.codigo=:codigoArea and u.empresa.codigo =:codigo"),
+		@NamedQuery(name = Usuario.POREMAIL, query = "select u from Usuario u where lower(u.email) = :email"),
 		@NamedQuery(name = Usuario.PORESPECIALIDADE, query = "select u from Usuario u where u.chefe=:chefe and u.especialidade=:especialidade") })
 public class Usuario implements Serializable {
 

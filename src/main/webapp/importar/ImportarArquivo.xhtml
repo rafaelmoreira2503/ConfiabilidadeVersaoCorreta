@@ -22,20 +22,11 @@
 
 				<h:form enctype="multipart/form-data">
 					
-						<p:outputLabel value="#{msg.empresa} *  " for="empresa" />
-						<p:selectOneMenu id="empresa" converter="empresaConverter"
-							value="#{fileBean.empresaSelecionada}">
-							<f:selectItem itemLabel="#{msg.seleciona_empresa}" />
-							<f:selectItems value="#{fileBean.todasEmpresas}" var="empresa"
-								itemValue="#{empresa}" itemLabel="#{empresa.nome}" />
-
-						</p:selectOneMenu>
-
 						
 						<p:fileUpload id="import" value="#{fileBean.file}" mode="single" label="#{msg.procurar}" 
 							auto="true" fileUploadListener="#{fileBean.handleFileUpload}"
 							invalidFileMessage="#{msg.somente_excel}"
-							allowTypes="/(\.|\/)(xls|xlsx)$/" />
+							allowTypes="/(\.|\/)(xml)$/" />
 
 						<p:commandButton id="saveBtn" value="#{msg.enviar}"
 							onstart="importaDlg.show();" oncomplete="importaDlg.hide();"
