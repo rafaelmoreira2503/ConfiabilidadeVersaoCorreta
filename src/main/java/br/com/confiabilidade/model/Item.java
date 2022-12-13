@@ -27,12 +27,12 @@ import org.hibernate.validator.constraints.NotBlank;
 		@NamedQuery(name = Item.ITEMEXISTENTE, query = "select i from Item i where i.codigo=:codigo and i.areaItem.codigo =:area"),
 		@NamedQuery(name = Item.TECNICOEXISTENTE, query = "select i from Item i where i.codigo=:codigo and i.areaItem.codigo =:area and i.tecnico.codigo=:tecnico"),
 		@NamedQuery(name = Item.TOTALGERENTE, query = "select count(i) from Item i where i.empresa.codigo=:codigo"),
-		@NamedQuery(name = Item.FEITOPARAGERENTE, query = "select count(i) from Item i where i.empresa.codigo=:codigo and i.status<>'PENDENTE'"),
+		@NamedQuery(name = Item.FEITOPARAGERENTE, query = "select count(i) from Item i where i.empresa.codigo=:codigo and i.status<>br.com.confiabilidade.model.StatusItem.PENDENTE"),
 		@NamedQuery(name = Item.TOTALENCARREGADO, query = "select count(i) from Item i where i.areaItem.codigo=:codigoArea and i.empresa.codigo=:codigoEmpresa"),
-		@NamedQuery(name = Item.FETOPARAENCARREGADO, query = "select count(i) from Item i where i.areaItem.codigo=:codigoArea and "
-				+ "i.empresa.codigo=:codigoEmpresa and i.status!='PENDENTE'"),
+//		@NamedQuery(name = Item.FETOPARAENCARREGADO, query = "select count(i) from Item i where i.areaItem.codigo=:codigoArea and "
+//				+ "i.empresa.codigo=:codigoEmpresa and i.status!='PENDENTE'"),
 		@NamedQuery(name = Item.FETOPARATECNICO, query = "select count(distinct i)from Item i   "
-				+ "where (i.status ='CRITICADO' or i.status ='JUSTIFICADO') and  i.tecnico.codigo=:codigo"),
+				+ "where (i.status =br.com.confiabilidade.model.StatusItem.CRITICADO or i.status =br.com.confiabilidade.model.StatusItem.JUSTIFICADO) and  i.tecnico.codigo=:codigo"),
 		@NamedQuery(name = Item.TOTALTECNICO, query = "select count(distinct i) from Item i where i.tecnico.codigo=:codigo"),
 		@NamedQuery(name = Item.ITEMDAEMPRESA, query = "select i from Item i where i.empresa=:empresa group by i.codigoItem") })
 public class Item implements Serializable {

@@ -1,3 +1,5 @@
+
+
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -20,7 +22,7 @@ public class AreasdoEncarregado {
 		trx.begin();
 
 		Query query = manager
-				.createQuery("select u.areaEncarregado from Usuario u where   u.empresa.codigo =1L");
+				.createQuery("select u.areaEncarregado from Usuario u where u.empresa.codigo =1L");
 		List<Area> areas = query.getResultList();
 		System.out.println("---Impressão de Epecialidade----");
 

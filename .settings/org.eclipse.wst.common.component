@@ -5,6 +5,9 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
+        <dependent-module archiveName="simple-email-2.10.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/simple-email-master/simple-email-master">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="Confiabilidade"/>
         <property name="java-output-path" value="/Confiabilidade/target/classes"/>
     </wb-module>

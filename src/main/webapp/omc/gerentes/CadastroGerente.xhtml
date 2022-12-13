@@ -49,7 +49,7 @@
 						value="#{cadastroGerenteBean.gerente.nome}" />
 
 					<p:outputLabel  value="#{msg.empresa} :"  for="empresa" />
-					<p:selectOneMenu id="empresa" required="true"
+					<p:selectOneMenu id="empresa" required="true" disabled="#{cadastroGerenteBean.editando}"
 						value="#{cadastroGerenteBean.gerente.empresa}">
 						<f:selectItem itemLabel="#{msg.seleciona_empresa}"  />
 						<f:selectItems value="#{cadastroGerenteBean.empresasRaizes}"

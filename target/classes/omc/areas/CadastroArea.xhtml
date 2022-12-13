@@ -54,10 +54,9 @@
 
 
 				<p:dataTable id="areasTable" value="#{cadastroAreasBean.lazyModel}"
-					var="area" style="margin-top: 20px;" rowKey="area.codigo"
-					rowIndexVar="linha" emptyMessage="#{msg.nenhuma_area}"
-					paginatorPosition="bottom" selectionMode="single"
-					selection="#{cadastroAreasBean.areaSelecionada}" rows="20"
+					var="area" style="margin-top: 20px;" 
+					emptyMessage="#{msg.nenhuma_area}"
+					paginatorPosition="bottom"  rows="20"
 					paginator="true"
 					paginatorTemplate="{RowsPerPageDropdown} {FirstPageLink} {PreviousPageLink} {CurrentPageReport} {NextPageLink} {LastPageLink}"
 					currentPageReportTemplate="(#{msg.pagina} {currentPage} #{msg.de} {totalPages}) - (#{msg.registro} {startRecord} #{msg.a} {endRecord}) - Total ({totalRecords} #{msg.registros})"

@@ -18,7 +18,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @NamedQueries({
 		@NamedQuery(name = Especialidade.ALL, query = "SELECT e FROM Especialidade e"),
 		@NamedQuery(name = Especialidade.COUNT, query = "SELECT COUNT(e) FROM Especialidade e"),
-		@NamedQuery(name = Especialidade.DESCRICAO, query = "from Especialidade where upper(descricao) = :descricao") })
+		@NamedQuery(name = Especialidade.DESCRICAO, query = "select e from Especialidade e where upper(e.descricao) = :descricao") })
 public class Especialidade implements Serializable {
 
 	private static final long serialVersionUID = 1L;

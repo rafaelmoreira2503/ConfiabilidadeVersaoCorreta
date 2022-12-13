@@ -1,6 +1,7 @@
 package br.com.confiabilidade.controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ViewScoped;
@@ -24,7 +25,7 @@ public class CadastroAreasBean implements Serializable {
 	@Inject
 	private Areas areas;
 
-	private List<Area> listaDeAreas;
+	private List<Area> listaDeAreas= new ArrayList<>();
 
 	private Area areaSelecionada;
 

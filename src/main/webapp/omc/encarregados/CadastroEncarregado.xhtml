@@ -47,7 +47,7 @@
 						value="#{cadastroEncarregadoBean.encarregado.nome}" />
 
 					<p:outputLabel value="#{msg.empresas}" for="empresa" />
-					<p:selectOneMenu id="empresa" converter="empresaConverter"
+					<p:selectOneMenu id="empresa" converter="empresaConverter" disabled="#{cadastroEncarregadoBean.editando}"
 						value="#{cadastroEncarregadoBean.empresa}">
 						<f:selectItem itemLabel="#{msg.seleciona_empresa} " />
 						<f:selectItems value="#{cadastroEncarregadoBean.empresasRaizes}"

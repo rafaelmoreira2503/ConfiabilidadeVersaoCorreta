@@ -132,7 +132,7 @@ public class Empresas implements Serializable {
 		if (filtros != null && !filtros.isEmpty()) {
 			jpql += " where ";
 			for (Map.Entry<String, String> entry : filtros.entrySet()) {
-				jpql += entry.getKey() + " like :" + entry.getKey() + " and ";
+				jpql += entry.getKey() + " like :" + entry.getKey() + " and";
 			}
 
 			// remove ultimo and desnecessario

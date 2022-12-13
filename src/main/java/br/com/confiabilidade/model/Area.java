@@ -23,7 +23,7 @@ import org.hibernate.validator.constraints.NotBlank;
 @NamedQueries({
 		@NamedQuery(name = Area.ALL, query = "Select a FROM Area a"),
 		@NamedQuery(name = Area.COUNT, query = "select count(a) from Area a"),
-		@NamedQuery(name = Area.DESCRICAO, query = "from Area where upper(descricao) = :descricao") })
+		@NamedQuery(name = Area.DESCRICAO, query = "select a from Area a where upper(a.descricao) = :descricao") })
 public class Area implements Serializable {
 
 	private static final long serialVersionUID = 1L;

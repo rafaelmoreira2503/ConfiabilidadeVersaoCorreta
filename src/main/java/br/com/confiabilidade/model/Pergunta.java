@@ -25,7 +25,7 @@ import org.hibernate.validator.constraints.NotBlank;
 		@NamedQuery(name = Pergunta.TOTAL, query = "Select count(p) from Pergunta p "),
 		@NamedQuery(name = Pergunta.ASSOCIADAS, query = "select distinct(pe.codigo_pergunta) from Pergunta p join p.perguntaEmpresas pe where pe.codigo_empresa.codigo=:codigo"),
 		@NamedQuery(name = Pergunta.NAOASSOCIADAS, query = "select p from Pergunta p where not exists( "
-				+ "from PerguntaEmpresa pe where pe.codigo_empresa.codigo=:codigo and pe.codigo_pergunta= p.codigo)") })
+				+ "select pe from PerguntaEmpresa pe where pe.codigo_empresa.codigo=:codigo and pe.codigo_pergunta= p)") })
 public class Pergunta implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -30,7 +30,7 @@ import org.hibernate.validator.constraints.br.CNPJ;
 		@NamedQuery(name = Empresa.EMPRESASPARAIMPORTACAOABC, query = "select e from Empresa e "),
 		@NamedQuery(name = Empresa.EMPRESASPARACRITICAR, query = "select e from Empresa e where not exists (select distinct(pe.codigo_empresa) from PerguntaEmpresa "
 				+ "pe where pe.codigo_empresa=e and pe.itemCriticado is not null and pe.areaCriticada is not null)"),
-		@NamedQuery(name = Empresa.PORCNPJ, query = "from Empresa where cnpj = :cnpj") })
+		@NamedQuery(name = Empresa.PORCNPJ, query = "select e from Empresa e where e.cnpj = :cnpj") })
 public class Empresa implements Serializable {
 	private static final long serialVersionUID = 1L;
 

@@ -52,7 +52,7 @@
 						value="#{cadastroTecnicoBean.tecnico.nome}" />
 
 					<p:outputLabel value="#{msg.empresa} : *" for="empresa" />
-					<p:selectOneMenu id="empresa" converter="empresaConverter"
+					<p:selectOneMenu id="empresa" converter="empresaConverter" disabled="#{cadastroTecnicoBean.editando}"
 						value="#{cadastroTecnicoBean.empresa}">
 						<f:selectItem itemLabel="#{msg.seleciona_empresa}" />
 						<f:selectItems value="#{cadastroTecnicoBean.empresasRaizes}"
